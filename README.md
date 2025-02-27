@@ -1,6 +1,4 @@
-# desafio-grafos
-
-# Problem Statement
+# Topological Sort
 
 *Em um projeto de sistemas, há várias tarefas a serem realizadas. Essas tarefas possuem dependência entre si, porque muitas vezes, é preciso terminar mais de uma tarefa para realizar alguma outra. Você foi contratado pelo Google para gerar a lista de tarefas que vão ser executadas em um projeto de melhoria do Youtube. Nós sabemos que, para cada tarefa, pode existir dependência de que outras tarefas tenham sido finalizadas anteriormente. Este é um problema conhecido como ordenação topológica. Utilizando necessariamente o encaminhamento em profundidade, implemente a lista de tarefas dado um grafo das tarefas e suas dependências do projeto.*
 
@@ -60,7 +58,7 @@
 0,4,3,7,1,6,2,5
 ```
 
-# Problem Statement
+# Shortest Path
 
 ***Como encontrar o melhor caminho entre dois pontos? Como ir de um ponto a outro na cidade gastando o menor tempo?***
 
