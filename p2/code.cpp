@@ -1,3 +1,16 @@
+/**
+EQUIPE:
+
+ARTHUR FERREIRA POMPILIO
+GUSTAVO FELIPE ALVES DA SILVA
+PAULA NÓBREGA DE CAMPOS GUIMARAES
+TOMÉ DA COSTA LIMA
+
+
+
+**/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -71,7 +84,68 @@ int dequeue(fila* fil){
     }
 }
 
-void bfs(vector<vector<int>> grafo, int inicio, bool visitado[], int ant [], int n){
+
+
+
+
+
+
+void menor_caminho (int ant[], int inicio, int final){
+    
+    vector<int> caminho_invertido;
+    int x = final;
+    
+    while(true){
+        
+        if (x == -1){
+            
+            cout << "---" << endl;
+            break;
+        }
+            
+        if (x == inicio){
+            
+            caminho_invertido.push_back(x);
+            
+            for (int k = caminho_invertido.size() - 1; k >= 0; k--){
+                
+                if (k == 0){
+                    cout << caminho_invertido[k] << endl;
+                }
+                else{
+                    cout << caminho_invertido[k] << ",";
+                }
+            }
+            
+            break;
+        } 
+        
+        caminho_invertido.push_back(x);
+        x = ant[x];
+        
+    }
+    
+    return;
+}
+
+
+
+void bfs(vector<vector<int>> grafo, int inicio, int final, int n){
+
+    
+    bool visitado[n];
+    int ant [n];
+    
+   
+    
+    for (int j = 0; j < n; j++){
+        
+        visitado[j] = false;
+        ant[j] = -1;
+        
+    }
+
+
 
     fila* f = cria_fila();
     enqueue(f, inicio);
@@ -97,12 +171,9 @@ void bfs(vector<vector<int>> grafo, int inicio, bool visitado[], int ant [], int
         }
     }
 
-    for (int i = 0; i < n; i++){
+   
+    menor_caminho (ant, inicio, final);
 
-
-        cout << ant[i] << endl;
-
-    }
     
     return;
 
@@ -116,23 +187,12 @@ int main()
 {
     int n;
     int q;
-    
+
     cin >> n;
     cin >> q;
     
-    
     vector<vector<int>> grafo;
-    bool visitado[n];
-    int ant [n];
-    
     grafo.resize(n);
-    for (int j = 0; j < n; j++){
-
-        visitado[j] = false;
-        ant[j] = -1;
-
-
-    }
 
 
     for (int i =0; i < q; i++){
@@ -146,11 +206,20 @@ int main()
         
     }
     
-    int vx, vd;
+    int vx;
     
-    cin >> vx >> vd;
+    while(cin >> vx){
+        
+        int vd;
+        cin >> vd;
+        cout << "A=" << vx << ", B=" << vd << ":" << endl; // fiquei em dúvida se botava esse ":", porque só aparece no output do primeiro test case
+        bfs(grafo, vx, vd, n);
+        cout << " "<< endl;
+        
+    }
     
-    bfs(grafo, vx, visitado, ant, n);
+    
+    
     
     return 0;
 }
